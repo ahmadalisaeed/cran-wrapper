@@ -1,0 +1,15 @@
+---
+# concurrency is the # of threads a sidekiq process creates, by default it's 25
+:concurrency: 25
+:queues:
+  - priority
+  - default
+
+:schedule:
+  sync_packages_worker:
+    cron: '0 12 * * *'   # Runs everyday at 12PM
+    class: SyncPackagesWorker
+
+  SyncPackagesVersionWorker:
+    cron: '*/10 * * * *'   # Runs every 10 minutes
+    class: SyncPackagesVersionWorker
