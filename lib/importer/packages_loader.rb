@@ -17,7 +17,7 @@ module Importer
     end
 
     def parse_packages(packages_file_data)
-      packages_file_data.split("\n\n").collect { |p| YAML.safe_load(p) }
+      packages_file_data.split("\n\n").collect { |p| YAML.load(p) }
     end
   end
 end
